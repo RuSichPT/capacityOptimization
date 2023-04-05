@@ -1,2 +1,6 @@
-# capacityOptimization
-Сapacity optimization for Massive MIMO systems
+# Сapacity optimization
+Оптимизация пропускной способности для Massive MIMO систем
+
+## Capacity скрипты
+
+* analyzeQuadriga.m - посмотреть как меняется функция распределения пропускной способности  Massive MIMO системы в зависимости от различных параметров.

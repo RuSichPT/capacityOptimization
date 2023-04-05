@@ -1,0 +1,7 @@
+# Release Notes
+
+## 0.0.1
+* - добавил скрипт анализа каналов Quadriga. 
+Capacity/analyzeQuadriga.m - сам скрипт
+Capacity/dataBase... - сгенерированные каналы
+
