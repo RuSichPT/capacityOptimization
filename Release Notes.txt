@@ -1,5 +1,14 @@
 # Release Notes
 
+## 0.0.2
+* - добавил подмодуль matlabFunctions
+* - добавил подмодуль QuaDRiGa и startup.m файл
+* - добавил скрипты
+Capacity/generateChannels.m
+Capacity/calculateCapacity.m
+Capacity/createQuaDRiGa.m
+Optimization...
+
 ## 0.0.1
 * - добавил скрипт анализа каналов Quadriga. 
 Capacity/analyzeQuadriga.m - сам скрипт
