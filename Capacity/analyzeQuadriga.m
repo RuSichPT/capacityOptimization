@@ -1,5 +1,4 @@
 clear;clc;%close all;
-addpath("privateFunc");
 % coeff = 1e5; % snr = 0 db       слагаемое 0.3 - 2
 % coeff = 5e5; % snr = 10 db      слагаемое 9-49
 % coeff = 1e6; % snr = 20 db      слагаемое 37-199

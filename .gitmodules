@@ -1,3 +1,6 @@
 [submodule "matlabFunctions"]
 	path = matlabFunctions
 	url = https://github.com/RuSichPT/matlabFunctions.git
+[submodule "QuaDRiGa"]
+	path = QuaDRiGa
+	url = https://github.com/fraunhoferhhi/QuaDRiGa.git
