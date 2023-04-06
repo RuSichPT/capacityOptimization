@@ -13,3 +13,10 @@
 ## Capacity скрипты
 
 * analyzeQuadriga.m - посмотреть как меняется функция распределения пропускной способности  Massive MIMO системы в зависимости от различных параметров.
+
+* calculateCapacity.m - расчет пропускной способности для модели канала по Кронекеру и QuaDRiGa
+
+## Optimization скрипты
+
+* optimizCapacity.m - скрипт расчета аналитической пропускной способности и решение оптимизационной задачи для ULA как в статье
+"Capacity Analysis and Optimal Spacing Design for Compact Array Massive MIMO Systems With Finite Aperture"
