@@ -16,6 +16,7 @@ for i = 1:length(dy)
 end
 figure
 plot(dy,abs(Rcor)/max(abs(Rcor)));
+xlabel("dy");
 
 dx = 0.1*lambda;
 dy = 0.0*lambda;
@@ -26,6 +27,7 @@ for i = 1:length(dz)
 end
 figure
 plot(dz,abs(Rcor)/max(abs(Rcor)));
+xlabel("dz");
 %%
 % n = 0,1...N
 function f = a_func(n)
@@ -56,10 +58,7 @@ function f = Rcor_func(dx,dy,dz,n,l,r)
     L = length(l);
     R = length(r);
     dxy = sqrt(dx^2+dy^2);
-    delta = 1/tan(dy/dx);
-    if delta == inf
-        delta = 1e9;
-    end
+    delta = atan(dy/dx);
 
     r1 = zeros(1,N);
     for in = 1:N
@@ -72,7 +71,7 @@ function f = Rcor_func(dx,dy,dz,n,l,r)
                 N2r = (n(in) - l(il))/2;
                 r3(ir) = (1i)^r(ir)*besselj(r(ir),-2*pi*dz)*(func(N1r) + func(N2r));
             end
-            r2(il) = besselj(0,-2*pi*dz)*besselj(n(in)/2-l(il),pi*dxy)*besselj(n(in)/2+l(il),pi*dxy) + sum(r3);
+            r2(il) = k_func(il,L)*pi*(besselj(0,-2*pi*dz)*besselj(n(in)/2-l(il),pi*dxy)*besselj(n(in)/2+l(il),pi*dxy) + sum(r3));
         end
         r1(in) = a_func(n(in))*(-1i)^n(in)*cos(n(in)*delta)*sum(r2);   
     end
