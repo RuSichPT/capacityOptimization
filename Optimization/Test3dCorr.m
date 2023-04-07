@@ -1,4 +1,4 @@
-clear; clc;
+clear;clc;close all;
 fc = 30e9;
 cLight = physconst('LightSpeed');
 % lambda = cLight/fc;
@@ -36,7 +36,7 @@ function f = a_func(n)
 
     A_H_func = @(phi) (-min(12*((phi*180/pi)/ang3dB).^2,threshold)); % аргумент в радианах
     if n == 0
-        arg = A_H_func;
+        arg = @(x) A_H_func(x) / 2;
     else
         arg = @(x) A_H_func(x).*cos(n*x);
     end
@@ -68,10 +68,10 @@ function f = Rcor_func(dx,dy,dz,n,l,r)
             for ir = 1:R
                 func = @(Nr) cos(Nr*pi)*besselj(n(in)/2-Nr,pi*dxy)*besselj(n(in)/2+Nr,pi*dxy);
                 N1r = (n(in) - l(il))/2;
-                N2r = (n(in) - l(il))/2;
+                N2r = (n(in) + l(il))/2;
                 r3(ir) = (1i)^r(ir)*besselj(r(ir),-2*pi*dz)*(func(N1r) + func(N2r));
             end
-            r2(il) = k_func(il,L)*pi*(besselj(0,-2*pi*dz)*besselj(n(in)/2-l(il),pi*dxy)*besselj(n(in)/2+l(il),pi*dxy) + sum(r3));
+            r2(il) = k_func(l(il),L)*pi*(besselj(0,-2*pi*dz)*besselj(n(in)/2-l(il),pi*dxy)*besselj(n(in)/2+l(il),pi*dxy) + sum(r3));
         end
         r1(in) = a_func(n(in))*(-1i)^n(in)*cos(n(in)*delta)*sum(r2);   
     end
