@@ -29,30 +29,6 @@ figure
 plot(dz,abs(Rcor)/max(abs(Rcor)));
 xlabel("dz");
 %%
-% n = 0,1...N
-function f = a_func(n)
-    threshold = 30;     % db
-    ang3dB = 65;        % degrees
-
-    A_H_func = @(phi) (-min(12*((phi*180/pi)/ang3dB).^2,threshold)); % аргумент в радианах
-    if n == 0
-        arg = @(x) A_H_func(x) / 2;
-    else
-        arg = @(x) A_H_func(x).*cos(n*x);
-    end
-    f = 1/pi*integral(arg,-pi,pi);% в радианах!!! ошибка похоже в статье
-end
-
-% l = 0,1...L
-% k зависит от L, поэтому передаем аргумент в функцию length(l) != L
-function f = k_func(l,L)    
-    if l == 0
-        f = 1/(2^(2*L))*nchoosek(2*L,L);
-    else
-        f = 1/(2^(2*L))*(-1)^l*2*nchoosek(2*L,L-1);
-    end
-end
-
 function f = Rcor_func(dx,dy,dz,n,l,r)
     N = length(n);
     L = length(l);
@@ -67,11 +43,11 @@ function f = Rcor_func(dx,dy,dz,n,l,r)
             r3 = zeros(1,R);
             for ir = 1:R
                 func = @(Nr) cos(Nr*pi)*besselj(n(in)/2-Nr,pi*dxy)*besselj(n(in)/2+Nr,pi*dxy);
-                N1r = (n(in) - l(il))/2;
-                N2r = (n(in) + l(il))/2;
+                N1r = (r(ir) - 2*(L-l(il)))/2;
+                N2r = (r(ir) + 2*(L-l(il)))/2;
                 r3(ir) = (1i)^r(ir)*besselj(r(ir),-2*pi*dz)*(func(N1r) + func(N2r));
             end
-            r2(il) = k_func(l(il),L)*pi*(besselj(0,-2*pi*dz)*besselj(n(in)/2-l(il),pi*dxy)*besselj(n(in)/2+l(il),pi*dxy) + sum(r3));
+            r2(il) = k_func(l(il),L)*pi*cos(L-l(il))*(besselj(0,-2*pi*dz)*besselj(n(in)/2-(L-l(il)),pi*dxy)*besselj(n(in)/2+(L-l(il)),pi*dxy) + sum(r3));
         end
         r1(in) = a_func(n(in))*(-1i)^n(in)*cos(n(in)*delta)*sum(r2);   
     end
