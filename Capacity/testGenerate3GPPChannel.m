@@ -3,9 +3,10 @@ clc;clear;close all
 numChan = 1000;
 numUsers = 2;
 seed = 200;
-sizeArray = [2 2]; 
+sizeArray = [4 8]; 
 %% Канал
-H = generate3GPPChannels(sizeArray,numUsers,numChan,seed);
+[H, Ch, l, b] = generate3GPPChannels(sizeArray,numUsers,numChan,seed,'3GPP_38.901_UMa_NLOS',0);
+
 coeff = 1e7;
 H = H*coeff;
 size(H)

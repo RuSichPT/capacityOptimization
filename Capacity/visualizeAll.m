@@ -1,7 +1,7 @@
 function visualizeAll(l)
-    l.visualize;
+    l.visualize([],[],0);
     view(-33, 60);
-    axis([-200 200 -200 200]) 
+    axis([-500 500 -500 500]) 
     
     [ map,x_coords,y_coords] = l.power_map( '3GPP_38.901_UMa_NLOS','quick',5,-500,500,-500,500,1.5 );
     P = sum(cat(3,map{:}),3);               % Total received power сумма по Rx
