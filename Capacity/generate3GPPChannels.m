@@ -1,4 +1,4 @@
-function [H, Ch, l, b] = generate3GPPChannels(sizeArray,numUsers,numChan,seed,scenario,indoor_frc)
+function [H, Ch, l, b] = generate3GPPChannels(sizeArray,numUsers,numChan,seed,power)
     % size - размер решетки [vertical horizontal];
     % numUsers - кол-во пользователей
     % numChan - кол-во каналов
@@ -12,9 +12,12 @@ function [H, Ch, l, b] = generate3GPPChannels(sizeArray,numUsers,numChan,seed,sc
     lambda = 0.5;
     polarization = 1;
     tilt = 12; % for polarization 4,5,6
-    aBS = qd_arrayant ('3gpp-mmw', sizeArray(1), sizeArray(2), fc, polarization, tilt, lambda);
+
+    aBS = qd_arrayant ('3gpp-mmw',sizeArray(1),sizeArray(2),fc,polarization,tilt,lambda,1,1);
+    aBS.Fa = aBS.Fa*power;
+    aBS.Fb = aBS.Fb*power;
+
     aMS = qd_arrayant('omni');
-    % aMS.copy_element(1,2);
     %% Layout
     l = qd_layout(s);
     l.tx_array = aBS;
@@ -28,12 +31,8 @@ function [H, Ch, l, b] = generate3GPPChannels(sizeArray,numUsers,numChan,seed,sc
             l.rx_position(1,j) = abs(l.rx_position(1,j));
         end 
     end
-%     l.rx_position(1,1) = 50;
-%     l.rx_position(2,1) = 10;
-%     l.rx_position(1,2) = 50;
-%     l.rx_position(2,2) = -10;
     rng("shuffle");
-    l.set_scenario(scenario,[],[],indoor_frc);
+    l.set_scenario('3GPP_38.901_UMa',[],[],0.8);
     %%
     visualizeAll(l);
     %%
@@ -50,6 +49,6 @@ function [H, Ch, l, b] = generate3GPPChannels(sizeArray,numUsers,numChan,seed,sc
         cm = get_channels(b);
         Ch = cat(1,Ch,cm);
         H = cat(4,H,getChannelsFromQuaDRiGa(cm));
-        disp("numChan " + i);
+        disp("created " + i);
     end
 end

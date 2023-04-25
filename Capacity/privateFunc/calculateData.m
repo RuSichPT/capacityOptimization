@@ -9,6 +9,7 @@ function [C, lambda] = calculateData(H,numSTS,snr,numExp)
 %         sqH = sqH/norm(sqH,"fro");
         [C(i,:), sigma] = mimoCapacityOne(sqHfreq,snr,numSTS);
         lambda(i) = sum(sigma(1:numSTS).^2);
+        disp("calculated " + i);
     end
 end
 %%

@@ -4,14 +4,12 @@ numChan = 1000;
 numUsers = 2;
 seed = 200;
 sizeArray = [4 8]; 
+power = 1e7;
 %% Канал
-[H, Ch, l, b] = generate3GPPChannels(sizeArray,numUsers,numChan,seed,'3GPP_38.901_UMa_NLOS',0);
-
-coeff = 1e7;
-H = H*coeff;
-size(H)
-disp(squeeze(H(:,:,2,1)));
-disp(squeeze(H(:,:,2,2)));
+[H, Ch, l, b] = generate3GPPChannels(sizeArray,numUsers,numChan,seed,power);
+% size(H)
+% disp(squeeze(H(:,:,2,1)));
+% disp(squeeze(H(:,:,2,2)));
 %%  Пропускная способность
 numSTS = min([size(H,1) size(H,2)]);
 numRx = numSTS;

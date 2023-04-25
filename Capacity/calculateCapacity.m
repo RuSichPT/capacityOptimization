@@ -28,16 +28,16 @@ Z = normColumn(Z);
 %%
 % Без корреляции
 Hsta = createKroneckerChannels(numTx,numRx,numExp,1,1);
-[C, lambda, condH, rankH] = calculateData(Hsta,numSTS,snr,numExp);
+[C, lambda] = calculateData(Hsta,numSTS,snr,numExp);
 % С корреляции
 Hsta = createKroneckerChannels(numTx,numRx,numExp,R,1);
-[C_r, lambda_r, condH_r, rankH_r] = calculateData(Hsta,numSTS,snr,numExp);
+[C_r, lambda_r] = calculateData(Hsta,numSTS,snr,numExp);
 % Со связью
 Hsta = createKroneckerChannels(numTx,numRx,numExp,1,Z);
-[C_c, lambda_c, condH_c, rankH_c] = calculateData(Hsta,numSTS,snr,numExp);
+[C_c, lambda_c] = calculateData(Hsta,numSTS,snr,numExp);
 % Все
 Hsta = createKroneckerChannels(numTx,numRx,numExp,R,Z);
-[C_r_c, lambda_r_c, condH_r_c, rankH_r_c] = calculateData(Hsta,numSTS,snr,numExp);
+[C_r_c, lambda_r_c] = calculateData(Hsta,numSTS,snr,numExp);
 % QuaDRiGa
 Hqua = createQuaDRiGa(numRx,numExp,165);
 [C_qua, lambda_qua, condH_qua, rankH_qua] = calculateData(Hqua,numSTS,snr,numExp);
