@@ -8,7 +8,9 @@ power = 1e7;
 %% Канал
 [H, Ch, l, b] = generate3GPPChannels(sizeArray,numUsers,numChan,seed,power);
 % size(H)
+% disp("H1");
 % disp(squeeze(H(:,:,2,1)));
+% disp("H2");
 % disp(squeeze(H(:,:,2,2)));
 %%  Пропускная способность
 numSTS = min([size(H,1) size(H,2)]);

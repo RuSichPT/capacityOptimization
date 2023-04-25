@@ -31,8 +31,8 @@ function [H, Ch, l, b] = generate3GPPChannels(sizeArray,numUsers,numChan,seed,po
             l.rx_position(1,j) = abs(l.rx_position(1,j));
         end 
     end
-    rng("shuffle");
     l.set_scenario('3GPP_38.901_UMa',[],[],0.8);
+    rng("shuffle");
     %%
     visualizeAll(l);
     %%
