@@ -1,13 +1,28 @@
 # Release Notes
 
+## 0.0.3
+* - добавил статьи
+* - добавил новую кор функцию, старая с опечатками в статье - Optimization/new3dCorr.m
+* - добавил скрипты:
+	watchImpulse.m - для просмотра импульсной характеристики и АЧХ канала QuaDRiGa
+	Capacity/generate3GPPChannels.m - для генерации канала 3GPP
+	Capacity/watchCDFQuaDRiGa.m - для просмотра функции распределения (CDF) и плотности вероятности (PDF) для углов AoD EoD
+	Capacity/testGenerate3GPPChannel.m - посмотреть пример генерации канала 3GPP 
+* - обновил matlabFunctions
+* - удалил скрипты:
+	Capacity/analyzeQuadriga.m
+	Capacity/generateChannels.m
+	Capacity/createQuaDRiGa.m
+	и другие
+
 ## 0.0.2
 * - добавил подмодуль matlabFunctions
 * - добавил подмодуль QuaDRiGa и startup.m файл
 * - добавил скрипты
-Capacity/generateChannels.m
-Capacity/calculateCapacity.m
-Capacity/createQuaDRiGa.m
-Optimization...
+	Capacity/generateChannels.m
+	Capacity/calculateCapacity.m
+	Capacity/createQuaDRiGa.m
+	Optimization...
 
 ## 0.0.1
 * - добавил скрипт анализа каналов Quadriga. 
