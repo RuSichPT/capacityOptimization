@@ -1,5 +1,5 @@
-function [H, Ch, l, b] = generate3GPPChannels(sizeArray,numUsers,numChan,seed,power)
-    % size - размер решетки [vertical horizontal];
+function [H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan,seed,power,myArray)
+    % sizeArray - размер решетки [vertical horizontal];
     % numUsers - кол-во пользователей
     % numChan - кол-во каналов
     % seed - сид ГПСЧ
@@ -9,11 +9,15 @@ function [H, Ch, l, b] = generate3GPPChannels(sizeArray,numUsers,numChan,seed,po
     s.show_progress_bars = 0;
     %% Arrays
     fc = 2e9;
-    lambda = 0.5;
     polarization = 1;
     tilt = 12; % for polarization 4,5,6
 
-    aBS = qd_arrayant ('3gpp-mmw',sizeArray(1),sizeArray(2),fc,polarization,tilt,lambda,1,1);
+    if myArray
+        aBS = generateMyArray(sizeArray(1), sizeArray(2), fc, spacing);
+    else
+        aBS = qd_arrayant('3gpp-mmw',sizeArray(1),sizeArray(2),fc,polarization,tilt,spacing,1,1);
+    end
+
     aBS.Fa = aBS.Fa*power;
     aBS.Fb = aBS.Fb*power;
 
@@ -33,8 +37,6 @@ function [H, Ch, l, b] = generate3GPPChannels(sizeArray,numUsers,numChan,seed,po
     end
     l.set_scenario('3GPP_38.901_UMa',[],[],0.8);
     rng("shuffle");
-    %%
-    visualizeAll(l);
     %%
     b = l.init_builder;
     rng(seed)

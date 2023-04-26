@@ -4,9 +4,13 @@ numChan = 1;
 numUsers = 100;
 seed = 200;
 sizeArray = [4 8];
-power = 1e6;
+power = 1e7;
+myArray = 1;
+spacing = 0.5;
 %% Канал
-[H, Ch, l, b] = generate3GPPChannels(sizeArray,numUsers,numChan,seed,power);
+[H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan,seed,power,myArray);
+%%
+% visualizeAll(l);
 %% EOD
 EoD = [];
 ch1 = Ch(1,:);

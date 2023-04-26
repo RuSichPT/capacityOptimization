@@ -1,12 +1,17 @@
-clc;clear;close all
+clc;clear;close all;
 %% Задаем параметры
 numChan = 1000;
-numUsers = 2;
+numUsers = 4;
 seed = 200;
 sizeArray = [4 8]; 
 power = 1e7;
+myArray = 1;
+spacing = 0.5;
 %% Канал
-[H, Ch, l, b] = generate3GPPChannels(sizeArray,numUsers,numChan,seed,power);
+[H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan,seed,power,myArray);
+%%
+% visualizeAll(l);
+%%
 % size(H)
 % disp("H1");
 % disp(squeeze(H(:,:,2,1)));
