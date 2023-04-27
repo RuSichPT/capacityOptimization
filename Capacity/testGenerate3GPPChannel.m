@@ -1,9 +1,9 @@
 clc;clear;close all;
 %% Задаем параметры
-numChan = 1000;
-numUsers = 4;
+numChan = 1;
+numUsers = 100;
 seed = 200;
-sizeArray = [4 8]; 
+sizeArray = [4 4]; 
 power = 1e7;
 myArray = 1;
 spacing = 0.5;
@@ -18,11 +18,8 @@ spacing = 0.5;
 % disp("H2");
 % disp(squeeze(H(:,:,2,2)));
 %%  Пропускная способность
-numSTS = min([size(H,1) size(H,2)]);
-numRx = numSTS;
-numChan = size(H,4);
-snr_dB = 0;
-[C, ~] = calculateData(H,numSTS,snr_dB,numChan);
+snr_dB = 10;
+[C, ~] = calculateData(H,snr_dB,numChan);
 %% Графики
 figure('Name','CDF');
 hold on

@@ -1,4 +1,4 @@
-function [C, lambda] = calculateData(H,numSTS,snr,numExp)
+function [C, lambda] = calculateData(H,snr,numExp)
     % H - матрица канала размерностью [Nrx Ntx Nch]
     C = zeros(numExp,length(snr));
     lambda = zeros(numExp,1);
@@ -7,15 +7,16 @@ function [C, lambda] = calculateData(H,numSTS,snr,numExp)
 
         sqHfreq = channelTimeToFreq(sqHtime);
 %         sqH = sqH/norm(sqH,"fro");
-        [C(i,:), sigma] = mimoCapacityOne(sqHfreq,snr,numSTS);
-        lambda(i) = sum(sigma(1:numSTS).^2);
+        [C(i,:), sigma] = mimoCapacityFreq(sqHfreq,snr);
+        lambda(i) = sum(sigma.^2);
         disp("calculated " + i);
     end
 end
 %%
-function [C, sigma] = mimoCapacityOne(H, snr_dB, numSTS)
+function [C, sigma] = mimoCapacityFreq(H, snr_dB)
     % H - матрица канала размерностью [Nrx Ntx Nfreq]
     % snr_dB - в дБ
+    numRx = size(H,1);
     numTx = size(H,2);
     numFreq = size(H,3);
 
@@ -26,8 +27,8 @@ function [C, sigma] = mimoCapacityOne(H, snr_dB, numSTS)
         for iF = 1:numFreq
             sqH = squeeze(H(:,:,iF));
             sigma = svd(sqH); % eig(H*H') = svd(H)^2 
-            lambda = sigma(1:numSTS).^2;
-            Cfreq(iF) = 1/numSTS*sum(log2(1 + 1/numTx*snr(iS)*abs(lambda))); % 1/numSTS нормировка по потокам 
+            lambda = sigma.^2;
+            Cfreq(iF) = 1/numRx*sum(log2(1 + 1/numTx*snr(iS)*abs(lambda))); % 1/numSTS нормировка по потокам 
         end
         C(iS) = mean(Cfreq); 
     end
