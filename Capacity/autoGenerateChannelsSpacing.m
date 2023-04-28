@@ -4,7 +4,7 @@ numChan = 100;
 numUsers = 100;
 seed = 200;
 power = 1e7;
-myArray = 1;
+myArray = 'omni';
 sizeArray = [4 4];
 %% sizeArray
 range = [0.25 0.1];
@@ -18,5 +18,5 @@ for i = 1:length(range)
     % Save
     name = "Capacity/dataBase/ant=" + sizeArray(1) + "x" + sizeArray(2) + "_numChan=" + numChan + "_users=" + numUsers ...
         + "_spacing=" + spacing + "_seed=" + seed + "_my=" + myArray + ".mat";
-    save(name,"H","C");
+    save(name,"H","C","myArray");
 end

@@ -12,10 +12,12 @@ function [H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan
     polarization = 1;
     tilt = 12; % for polarization 4,5,6
 
-    if myArray
-        aBS = generateMyArray(sizeArray(1), sizeArray(2), fc, spacing);
+    if (myArray == "omni") || (myArray == "dipole")
+        aBS = generateMyArray(sizeArray(1),sizeArray(2),fc,spacing,myArray);    
+    elseif (myArray == "3gpp-mmw")
+        aBS = qd_arrayant(myArray,sizeArray(1),sizeArray(2),fc,polarization,tilt,spacing,1,1);
     else
-        aBS = qd_arrayant('3gpp-mmw',sizeArray(1),sizeArray(2),fc,polarization,tilt,spacing,1,1);
+        error("Нет такой решетки")
     end
 
     aBS.Fa = aBS.Fa*power;

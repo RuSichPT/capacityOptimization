@@ -1,11 +1,11 @@
-function a = generateMyArray(vertical, horizontal, fc, spacing)
+function a = generateMyArray(vertical, horizontal, fc, spacing, arrayType)
     % vertical - кол-во элементов по вертикали ось Z
     % horizontal - кол-во элементов по вертикали ось Y
 
     cLight = physconst('LightSpeed');
     lambda = cLight/fc;
 
-    a = qd_arrayant ('omni');
+    a = qd_arrayant (arrayType);
     a.center_frequency = fc;
     a.copy_element(1,vertical*horizontal);
 
