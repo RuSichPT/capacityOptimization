@@ -1,6 +1,6 @@
 clc;clear;close all;
 %% Задаем параметры
-numChan = 1;
+numChan = 100;
 numUsers = 100;
 seed = 200;
 sizeArray = [4 4]; 
