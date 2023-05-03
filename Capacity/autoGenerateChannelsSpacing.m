@@ -6,12 +6,13 @@ seed = 200;
 power = 1e7;
 myArray = 'omni';
 sizeArray = [4 4];
+tilt = 0;
 %% sizeArray
-range = [0.25 0.1];
+range = {[0.25 0.25] [0.1 0.1]};
 for i = 1:length(range)
-    spacing = range(i);
+    spacing = range{i};
     % Канал
-    [H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan,seed,power,myArray);
+    [H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan,seed,power,myArray,tilt);
     % Пропускная способность
     snr_dB = 0;
     [C, ~] = calculateData(H,snr_dB,numChan);

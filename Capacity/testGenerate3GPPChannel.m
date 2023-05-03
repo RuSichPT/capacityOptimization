@@ -1,14 +1,15 @@
 clc;clear;close all;
 %% Задаем параметры
-numChan = 100;
+numChan = 1;
 numUsers = 100;
 seed = 200;
 sizeArray = [4 4]; 
 power = 1e7;
-myArray = '3gpp-mmw';
-spacing = 0.5;
+myArray = 'dipole';
+spacing = [0.5 0.5];
+tilt = 12;
 %% Канал
-[H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan,seed,power,myArray);
+[H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan,seed,power,myArray,tilt);
 %%
 % visualizeAll(l);
 %%

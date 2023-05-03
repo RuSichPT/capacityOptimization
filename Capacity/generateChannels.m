@@ -6,9 +6,10 @@ seed = 200;
 sizeArray = [4 4]; 
 power = 1e7;
 myArray = '3gpp-mmw';
-spacing = 0.5;
+spacing = [0.5 0.5];
+tilt = 0;
 %% Канал
-[H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan,seed,power,myArray);
+[H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan,seed,power,myArray,tilt);
 %% Пропускная способность
 snr_dB = 0;
 [C, ~] = calculateData(H,snr_dB,numChan);

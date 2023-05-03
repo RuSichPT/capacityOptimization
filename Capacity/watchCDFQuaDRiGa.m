@@ -5,10 +5,11 @@ numUsers = 100;
 seed = 200;
 sizeArray = [4 8];
 power = 1e7;
-myArray = 1;
-spacing = 0.5;
+myArray = 'omni';
+spacing = [0.5 0.5];
+tilt = 0;
 %% Канал
-[H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan,seed,power,myArray);
+[H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan,seed,power,myArray,tilt);
 %%
 % visualizeAll(l);
 %% EOD
