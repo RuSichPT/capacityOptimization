@@ -1,19 +1,22 @@
-function [C, lambda] = calculateData(H,snr,numExp)
-    % H - матрица канала размерностью [Nrx Ntx Nch]
-    C = zeros(numExp,length(snr));
-    lambda = zeros(numExp,1);
-    for i = 1:numExp
-        sqHtime = squeeze(H(:,:,:,i));
-
-        sqHfreq = channelTimeToFreq(sqHtime);
-%         sqH = sqH/norm(sqH,"fro");
-        [C(i,:), sigma] = mimoCapacityFreq(sqHfreq,snr);
-        lambda(i) = sum(sigma.^2);
+function [C, lambdaChan] = calculateData(H,snr,numChan)
+    % H - матрица канала размерностью [numRx numTx numPath numChan] или[numRx numTx numChan]
+    C = zeros(numChan,length(snr));
+    lambdaChan = zeros(numChan,1);
+    for i = 1:numChan
+        if length(size(H)) == 4
+            sqHtime = squeeze(H(:,:,:,i));
+            sqHfreq = channelTimeToFreq(sqHtime);
+            [C(i,:), lambda] = mimoCapacityFreq(sqHfreq,snr);
+        else
+            sqH = squeeze(H(:,:,i));
+            [C(i,:), lambda] = mimoCapacity(sqH,snr);
+        end
+        lambdaChan(i) = sum(lambda);
         disp("calculated " + i);
     end
 end
 %%
-function [C, sigma] = mimoCapacityFreq(H, snr_dB)
+function [C, lambda] = mimoCapacityFreq(H, snr_dB)
     % H - матрица канала размерностью [Nrx Ntx Nfreq]
     % snr_dB - в дБ
     numRx = size(H,1);

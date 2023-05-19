@@ -1,10 +1,10 @@
 clc;clear;close all;
 %% Задаем параметры
-numTx = 24;
-numRx = 4;
+numTx = 32;
+numRx = 100;
 numSTS = numRx;
 snr = 20;             % SNR в дБ
-numExp = 100;
+numChan = 100;
 
 % Задаем корреляцию
 n = 0;
@@ -27,20 +27,17 @@ vec1 = ones(1,numTx-1)*a;
 Z = normColumn(Z);
 %%
 % Без корреляции
-Hsta = createKroneckerChannels(numTx,numRx,numExp,1,1);
-[C, lambda] = calculateData(Hsta,numSTS,snr,numExp);
+Hsta = createKroneckerChannels(numTx,numRx,numChan,1,1);
+[C, lambda] = calculateData(Hsta,snr,numChan);
 % С корреляции
-Hsta = createKroneckerChannels(numTx,numRx,numExp,R,1);
-[C_r, lambda_r] = calculateData(Hsta,numSTS,snr,numExp);
+Hsta = createKroneckerChannels(numTx,numRx,numChan,R,1);
+[C_r, lambda_r] = calculateData(Hsta,snr,numChan);
 % Со связью
-Hsta = createKroneckerChannels(numTx,numRx,numExp,1,Z);
-[C_c, lambda_c] = calculateData(Hsta,numSTS,snr,numExp);
+Hsta = createKroneckerChannels(numTx,numRx,numChan,1,Z);
+[C_c, lambda_c] = calculateData(Hsta,snr,numChan);
 % Все
-Hsta = createKroneckerChannels(numTx,numRx,numExp,R,Z);
-[C_r_c, lambda_r_c] = calculateData(Hsta,numSTS,snr,numExp);
-% QuaDRiGa
-Hqua = createQuaDRiGa(numRx,numExp,165);
-[C_qua, lambda_qua, condH_qua, rankH_qua] = calculateData(Hqua,numSTS,snr,numExp);
+Hsta = createKroneckerChannels(numTx,numRx,numChan,R,Z);
+[C_r_c, lambda_r_c] = calculateData(Hsta,snr,numChan);
 %% Графики
 figure('Name','CDF');
 hold on
@@ -52,9 +49,7 @@ disp("mean C_r: " + statsC_r.mean);
 disp("mean C_c: " + statsC_c.mean);
 [~, statsC_r_c] = cdfplot(C_r_c(:,1));
 disp("mean C_r_c: " + statsC_r_c.mean);
-[~, statsC_qua] = cdfplot(C_qua(:,1));
-disp("mean C_qua: " + statsC_qua.mean);
-legend("C","C_r","C_c","C_r_c","C_qua");
+legend('C','C_r','C_c','C_r_c');
 %%
 function Z = normColumn(Z)
     numTx = size(Z);

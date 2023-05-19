@@ -5,6 +5,7 @@ function [H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan
     % numUsers - кол-во пользователей
     % numChan - кол-во каналов
     % seed - сид ГПСЧ
+    % H - [numUsers numTx numPath numChan] numUsers = numRx
     %% Sim param
     s = qd_simulation_parameters;
     s.use_3GPP_baseline = 1;

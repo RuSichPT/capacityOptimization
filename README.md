@@ -22,7 +22,7 @@ https://github.com/RuSichPT/matlabFunctions
 
 * **watchCDFQuaDRiGa.m** - для просмотра функции распределения (CDF) и плотности вероятности (PDF) для углов AoD и EoD
 
-* **calculateCapacity.m** - расчет пропускной способности для модели канала по Кронекеру и QuaDRiGa (не работает пока) 
+* **calculateCapacity.m** - расчет пропускной способности для модели канала по Кронекеру  
 
 * **testGenerate3GPPChannel.m** - пример построения функции распределения (CDF) пропускной способности
 
