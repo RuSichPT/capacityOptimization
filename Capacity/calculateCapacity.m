@@ -2,7 +2,6 @@ clc;clear;close all;
 %% Задаем параметры
 numTx = 32;
 numRx = 100;
-numSTS = numRx;
 snr = 20;             % SNR в дБ
 numChan = 100;
 
