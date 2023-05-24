@@ -37,6 +37,8 @@ xlim([-180 180])
 xlabel('Azimuth angle')
 
 plotCDF(AoD);
+
+% save("AoD_EoD","AoD","EoD");
 %%
 function plotPDF(x,nbins)
     figure('Name','PDF');

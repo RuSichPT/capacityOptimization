@@ -49,10 +49,4 @@ disp("mean C_c: " + statsC_c.mean);
 [~, statsC_r_c] = cdfplot(C_r_c(:,1));
 disp("mean C_r_c: " + statsC_r_c.mean);
 legend('C','C_r','C_c','C_r_c');
-%%
-function Z = normColumn(Z)
-    numTx = size(Z);
-    for j = 1:numTx
-        Z(:,j) = Z(:,j)/sum(Z(:,j),1);
-    end
-end
+

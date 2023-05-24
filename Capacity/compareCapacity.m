@@ -9,14 +9,16 @@ dz = [2 1.5 1.2 1 0.857 0.75];
 dy = [0.514 0.4 0.33 0.277 0.24 0.212 0.19];
 %%
 C = zeros(1,length(Nz));
-
+ro_int = initRtx();
 for i = 1:length(Ny)
     for j = 1:length(Nz)
-        R = 1;
-        numTx = Nz(j)*Ny(i);
+        R = calculateRtx(dy(i),dz(j),Ny(i),Nz(j),ro_int);
+%         R = 1; 
+        numTx = Ny(i)*Nz(j);
         H = createKroneckerChannels(numTx,numRx,numChan,R,1);
         [tmpC, lambda_r] = calculateData(H,snr,numChan);
         C(i,j) = mean(tmpC);
+        disp("calculated " + i + " " + j);
     end
 end
 %%

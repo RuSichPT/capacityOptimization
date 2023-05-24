@@ -3,6 +3,6 @@ function Hk = createKroneckerChannels(numTx,numRx,numChan,R,Z)
     for k = 1:numChan
         H = createStaticChannel(numTx,numRx);
         H = H.';
-        Hk(:,:,k) = H*sqrt(R)*Z;
+        Hk(:,:,k) = H*sqrtm(R)*Z;
     end
 end
