@@ -20,6 +20,8 @@ https://github.com/RuSichPT/matlabFunctions
     
     startup.m
 
+* **compareCapacity.m** - для просмотра пропускной способности для модели канала по Кронекеру с заданной апертурой 3.6 x 6     
+
 * **watchCDFQuaDRiGa.m** - для просмотра функции распределения (CDF) и плотности вероятности (PDF) для углов AoD и EoD
 
 * **calculateCapacity.m** - расчет пропускной способности для модели канала по Кронекеру  
