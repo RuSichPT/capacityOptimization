@@ -11,6 +11,7 @@ function ro_int = initRtx()
     alpha = 1./(sum(abs(EoD-median(EoD)))./length(EoD));    % разброс угла места
     %%%%%%%%%%%%%%%%%%% Плотность вероятности для угла места
     pdf_theta = @(theta) alpha/2.*exp(-alpha.*abs(theta-theta0));
+    pdf_theta_sin = @(theta) pdf_theta(theta).*sin(theta);  % домноженная на sin плотность для нормировки
     %% %%%%%%%%%%%%%%%%%%% оценка параметров распределения по азимуту, распределение Фон-Мизеса, углы в радианах
     N_AoD = length(AoD);                    % число измерений
     phi0 = angle(mean(exp(1i.*AoD)));       % среднее значение азимута
@@ -24,7 +25,7 @@ function ro_int = initRtx()
     pdf_phi = @(phi) exp(k*cos(phi-phi0))./(2*pi*besseli(0,k));
     
     %%%%%%%%%%%%%%%%%%% Нормировочные константы 
-    C_theta = integral(pdf_theta, 0, pi);
+    C_theta = integral(pdf_theta_sin, 0, pi);
     C_phi = integral(pdf_phi, 0, 2*pi);
     
     
