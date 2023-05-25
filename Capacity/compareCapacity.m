@@ -8,7 +8,7 @@ Ny = [8 10 12 14 16 18 20];
 dz = [2 1.5 1.2 1 0.857 0.75];
 dy = [0.514 0.4 0.33 0.277 0.24 0.212 0.19];
 %%
-C = zeros(1,length(Nz));
+C = zeros(length(Ny),length(Nz));
 ro_int = initRtx();
 for i = 1:length(Ny)
     for j = 1:length(Nz)
