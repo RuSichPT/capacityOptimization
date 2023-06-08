@@ -2,7 +2,7 @@ clc;clear;close all;
 %%
 numRx = 100;
 numChan = 100;
-snr = [0, 10, 20, 30];             % SNR в дБ
+snr = [0, 10, 20, 30, 40];             % SNR в дБ
 Nz = [4 5 6 7 8 9 10];
 Ny = [8 10 12 14 16 18 20];
 numTx = Nz.*Ny;
