@@ -38,17 +38,4 @@ xlabel('Azimuth angle')
 
 plotCDF(AoD);
 
-% save("Capacity/privateFunc/AoD_EoD.mat","AoD","EoD");
-%%
-function plotPDF(x,nbins)
-    figure('Name','PDF');
-    histogram(x,nbins);
-    grid on
-end
-%%
-function plotCDF(x)
-    figure('Name','CDF');
-    hold on
-    [~, statsEoD] = cdfplot(x);
-    disp(statsEoD)
-end
+save("Capacity/privateFunc/AoD_EoD_" + myArray + ".mat","AoD","EoD");
