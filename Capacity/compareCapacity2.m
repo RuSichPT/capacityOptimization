@@ -7,6 +7,7 @@ Nz = [4 8];
 Ny = [8 10 12 14];
 dz = [2 0.857];
 dy = [0.514 0.4 0.33 0.277];
+[resY,resZ] = checkAperture(Ny,dy,3.6,Nz,dz,6);
 %%
 C1 = zeros(length(Ny),length(Nz));
 C2 = zeros(length(Ny),length(Nz));
