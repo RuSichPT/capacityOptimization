@@ -20,15 +20,24 @@ https://github.com/RuSichPT/matlabFunctions
     
     startup.m
 
-* **compareCapacity.m** - для просмотра пропускной способности для модели канала по Кронекеру с заданной апертурой 3.6 x 6     
+* **compareCapacity.m** - для просмотра средней пропускной способности для модели канала по Кронекеру с заданной апертурой 6 x 3.6
+с пространственной корреляцией.  
 
-* **watchCDFQuaDRiGa.m** - для просмотра функции распределения (CDF) и плотности вероятности (PDF) для углов AoD и EoD
+* **compareCapacity2.m** - для сравнения средней пропускной способности с пространственнйо корреляцией и без нее.    
 
-* **calculateCapacity.m** - расчет пропускной способности для модели канала по Кронекеру  
+* **watchCDFQuaDRiGa.m** - для просмотра функции распределения (CDF) и плотности вероятности (PDF) для углов AoD и EoD.
 
-* **testGenerate3GPPChannel.m** - пример построения функции распределения (CDF) пропускной способности
+* **watchCDFQuaDRiGa2.m** - для просмотра PDF для углов AoD и EoD для omni и dipole антенных элементов.
 
-* **antennaPattern.m** - для просмотра диаграммы направленности (ДН) элемента антенной решетки 
+* **calculateCapacity.m** - расчет пропускной способности для модели канала по Кронекеру.
+
+* **testGenerate3GPPChannel.m** - пример построения функции распределения (CDF) пропускной способности.
+
+* **antennaPattern.m** - для просмотра диаграммы направленности (ДН) элемента антенной решетки. 
+
+* **calculateABSD.m** - для генерации коэффициентов A B C D, чтобы задать аналитически ДН антенного элемента.
+
+* **capacityOnNumTx.m** - для просмотра средней пропускной способности от отношения числа антенн на передачу к числу на приеме. 
 
 Скрипты для генерации канала, расчета пропускной способности и сохранения данных в mat файл
 * **generate/generateChannels.m** - ручная генерация канала.
@@ -38,13 +47,13 @@ https://github.com/RuSichPT/matlabFunctions
 * **generate/autoGenerateChannelsSpacing.m** - автоматическая генерация канала с изменением **расстояния между элементами**.
 
 Скрипты для построение графика функции распределения (CDF) пропускной способности по сгенерированным данным (На github данных нет, они тяжелые. Можно сгенерировать функциями выше):
-* dataBase/**analyzeOmni.m** - для решетки с элементом **'omni'**
+* dataBase/**analyzeOmni.m** - для решетки с элементом **'omni'**.
   
-* dataBase/**analyzeDipole.m** - для решетки с элементом **'dipole'**
+* dataBase/**analyzeDipole.m** - для решетки с элементом **'dipole'**.
 
-* dataBase/**analyze3Gppmmw.m** - для решетки **'3gpp-mmw'** 
+* dataBase/**analyze3Gppmmw.m** - для решетки **'3gpp-mmw'**. 
 
 ## Optimization скрипты
 
 * **optimizCapacity.m** - скрипт расчета аналитической пропускной способности и решение оптимизационной задачи для ULA как в статье
-"Capacity Analysis and Optimal Spacing Design for Compact Array Massive MIMO Systems With Finite Aperture"
+"Capacity Analysis and Optimal Spacing Design for Compact Array Massive MIMO Systems With Finite Aperture".
