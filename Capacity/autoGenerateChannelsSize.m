@@ -17,7 +17,7 @@ for i = 1:length(range)
     snr_dB = 0;
     [C, ~] = calculateData(H,snr_dB,numChan);
     % Save
-    name = "Capacity/dataBase/ant=" + sizeArray(1) + "x" + sizeArray(2) + "_numChan=" + numChan + "_users=" + numUsers ...
+    name = "Capacity/dataBase/data/ant=" + sizeArray(1) + "x" + sizeArray(2) + "_numChan=" + numChan + "_users=" + numUsers ...
         + "_spacing=" + spacing + "_seed=" + seed + "_my=" + myArray + ".mat";
     save(name,"H","C","myArray");
 end
