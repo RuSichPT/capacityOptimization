@@ -1,7 +1,5 @@
-function [H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan,seed,power,myArray,tilt)
-    % sizeArray - размер решетки [vertical horizontal];
-    % spacing - расстояние между элементами [vertical horizontal];
-    % tilt - повернуть ДН и поляризацию на tilt градусов
+function [H, Ch, l, b] = generate3GPPChannels(aBS,aMS,numUsers,numChan,seed)
+    % aBS, aMS - антенные решетки для BS MS
     % numUsers - кол-во пользователей
     % numChan - кол-во каналов
     % seed - сид ГПСЧ
@@ -10,22 +8,6 @@ function [H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan
     s = qd_simulation_parameters;
     s.use_3GPP_baseline = 1;
     s.show_progress_bars = 0;
-    %% Arrays
-    fc = 3.5e9;
-    polarization = 1;
-
-    if (myArray == "omni") || (myArray == "dipole")
-        aBS = generateMyArray(sizeArray,spacing,tilt,fc,myArray);    
-    elseif (myArray == "3gpp-mmw")
-        aBS = qd_arrayant(myArray,sizeArray(1),sizeArray(2),fc,polarization,tilt,spacing(1),1,1);
-    else
-        error("Нет такой решетки")
-    end
-
-    aBS.Fa = aBS.Fa*power;
-    aBS.Fb = aBS.Fb*power;
-
-    aMS = qd_arrayant('omni');
     %% Layout
     max_dist = 200;
     l = qd_layout(s);

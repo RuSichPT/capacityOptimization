@@ -12,7 +12,8 @@ range = {[0.25 0.25] [0.1 0.1]};
 for i = 1:length(range)
     spacing = range{i};
     % Канал
-    [H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan,seed,power,myArray,tilt);
+    [aBS,aMS] = generate_aBS_aMS(sizeArray,spacing,power,myArray,tilt);
+    [H, Ch, l, b] = generate3GPPChannels(aBS,aMS,numUsers,numChan,seed);
     % Пропускная способность
     snr_dB = 0;
     [C, ~] = calculateData(H,snr_dB,numChan);

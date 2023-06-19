@@ -12,7 +12,7 @@ function [C, lambdaChan] = calculateData(H,snr,numChan)
             [C(i,:), lambda] = mimoCapacity(sqH,snr);
         end
         lambdaChan(i) = sum(lambda);
-        disp("calculated " + i);
+        disp("Capacity for chan " + i + " calculated ");
     end
 end
 %%

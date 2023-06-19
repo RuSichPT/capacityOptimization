@@ -9,7 +9,8 @@ myArray = '3gpp-mmw';
 spacing = [0.5 0.5];
 tilt = 0;
 %% Канал
-[H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan,seed,power,myArray,tilt);
+[aBS,aMS] = generate_aBS_aMS(sizeArray,spacing,power,myArray,tilt);
+[H, Ch, l, b] = generate3GPPChannels(aBS,aMS,numUsers,numChan,seed);
 %% Пропускная способность
 snr_dB = 0;
 [C, ~] = calculateData(H,snr_dB,numChan);

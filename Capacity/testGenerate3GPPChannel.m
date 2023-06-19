@@ -9,7 +9,8 @@ myArray = 'dipole';
 spacing = [0.5 0.5];
 tilt = 12;
 %% Канал
-[H, Ch, l, b] = generate3GPPChannels(sizeArray,spacing,numUsers,numChan,seed,power,myArray,tilt);
+[aBS,aMS] = generate_aBS_aMS(sizeArray,spacing,power,myArray,tilt);
+[H, Ch, l, b] = generate3GPPChannels(aBS,aMS,numUsers,numChan,seed);
 %%
 % visualizeAll(l);
 %%
