@@ -13,7 +13,9 @@ parDipole.D = 0;
 parametric = qd_arrayant.generate('parametric', parDipole.A, parDipole.B, parDipole.C, parDipole.D);
 parametric.visualize;
 %% path
-patch = qd_arrayant.generate('patch');
+BWaz = 40;
+BWel = 40;
+[patch, ~] = qd_arrayant.generate('custom', BWaz, BWel, 0);
 [patchBWaz, patchBWel] = patch.calc_beamwidth();
 patch.visualize();
 
