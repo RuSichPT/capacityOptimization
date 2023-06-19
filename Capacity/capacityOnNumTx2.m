@@ -45,5 +45,8 @@ for i = 1:length(snr)
 end
 grid on;
 xlabel('numTx/numRx');
+title(antennaType)
 ylabel('Mean Capacity');
 legend(str1{:},str2{:});
+
+% save(antennaType + ".mat","C1","C2");
