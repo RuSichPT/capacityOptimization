@@ -1,5 +1,28 @@
 # Release Notes
 
+## 0.0.4
+* - добавил скрипт для генерации коэффициентов A B C D, чтобы задать аналитически ДН антенного элемента
+	Capacity/calculateABСD.m
+* - добавил проверку апертуры
+	Capacity/privateFunc/checkAperture.m
+* - sqrt -> sqrtm для матрицы в createKroneckerChannels.m
+* - добавлена аналитическая запись для пространственной корреляции
+	Capacity/privateFunc/calculateRtx.m
+* - исправил расчет пропускной способности. Убрал numSTS
+* - изменил позиции по Z для абонентов (теперь как этажи)
+* - добавил скрипты
+	Capacity/antennaPattern.m
+	Capacity/compareCapacity.m
+	Capacity/generate/generateChannels.m
+	Capacity/generate/autoGenerateChannelsSize.m
+	Capacity/generate/autoGenerateChannelsSpacing.m
+	Capacity/capacityOnNumTx.m
+	Capacity/capacityOnNumTx2.m
+	Capacity/watchCDFQuaDRiGa2.m
+	Capacity/compareCapacity2.m
+	Capacity/watchDN.m
+	Capacity/capacityOnBW.m
+
 ## 0.0.3
 * - добавил статьи
 * - добавил новую кор функцию, старая с опечатками в статье - Optimization/new3dCorr.m
