@@ -1,4 +1,6 @@
-function ro_int = initRtx(antenna_type)
+function ro_int = initRtx(antenna_type,BW)
+% BW - ширина ДН [BW azimuth  BW Elevation] для custom
+    
 load 'AoD_EoD.mat' AoD EoD;
 EoD = EoD(:).*pi/180;
 AoD = AoD(:).*pi/180;
@@ -52,6 +54,11 @@ switch antenna_type
         %%%%%%%%%%%%%%%%%%% Включение параметров ДН (патч)
         patch = qd_arrayant.generate('patch');
         [patchBWaz, patchBWel] = patch.calc_beamwidth();
+
+        if ~isempty(BW) 
+            patchBWaz = BW(1);
+            patchBWel = BW(2);
+        end
         
         [~, par] = qd_arrayant.generate('custom', patchBWaz, patchBWel, 0);
         parPatch.A = 1;
