@@ -1,4 +1,4 @@
-function R_TX = calculateRtx1(dy_len,dz_len,n_y,n_z,chi_crosspol, antenna_type, BW)
+function R_TX = calculateRtxTwoPolarizations(dy_len,dz_len,n_y,n_z,chi_crosspol, antenna_type, BW)
 load('AoD_EoD.mat');
 EoD = EoD(:).*pi/180;
 % EoD = pi/2-EoD;     % отсчет углов от оси z, 0 - зенит, 90 - горизонт
