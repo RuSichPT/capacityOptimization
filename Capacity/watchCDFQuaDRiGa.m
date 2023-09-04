@@ -8,8 +8,9 @@ power = 1e7;
 myArray = 'omni';
 spacing = [0.5 0.5];
 tilt = 0;
+fc = 3.5e9;
 %% Канал
-[aBS,aMS] = generate_aBS_aMS(sizeArray,spacing,power,myArray,tilt);
+[aBS,aMS] = generate_aBS_aMS(sizeArray,spacing,power,myArray,fc,tilt);
 [H, Ch, l, b] = generate3GPPChannels(aBS,aMS,numUsers,numChan,seed);
 %%
 % visualizeAll(l);
@@ -39,4 +40,4 @@ xlabel('Azimuth angle')
 
 plotCDF(AoD);
 
-save("Capacity/privateFunc/AoD_EoD" + myArray + ".mat","AoD","EoD");
+save("Capacity/privateFunc/AoD_EoD_" + myArray + ".mat","AoD","EoD");

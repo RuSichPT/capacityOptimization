@@ -8,6 +8,7 @@ function [H, Ch, l, b] = generate3GPPChannels(aBS,aMS,numUsers,numChan,seed)
     s = qd_simulation_parameters;
     s.use_3GPP_baseline = 1;
     s.show_progress_bars = 0;
+    s.center_frequency = aBS.center_frequency;
     %% Layout
     max_dist = 200;
     l = qd_layout(s);
@@ -25,7 +26,8 @@ function [H, Ch, l, b] = generate3GPPChannels(aBS,aMS,numUsers,numChan,seed)
     end
     l.rx_position(3,:) = 3*(floor-1) + 1.5;
     
-    indoor_rx = l.set_scenario('3GPP_38.901_UMa_NLOS',[],[],0.8);       % Set the scenario
+    % LOSonly, Freespace, 3GPP_38.901_UMa_NLOS page 101 QuADRiGa
+    indoor_rx = l.set_scenario('LOSonly',[],[],0.8);       % Set the scenario
     l.rx_position(3,~indoor_rx) = 1.5;                                  % Set outdoor-users to 1.5 m height
     rng('shuffle');
     %%

@@ -1,6 +1,6 @@
 function Hfreq = channelTimeToFreq(Htime)
     % Htime - временная матрица канала размерностью [Nrx Ntx Npath]
-    % Htime - частотная матрица канала размерностью [Nrx Ntx Nfreq]
+    % Hfreq - частотная матрица канала размерностью [Nrx Ntx Nfreq]
 
     N_FFT = 512;
     numRx = size(Htime,1);

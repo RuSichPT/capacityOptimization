@@ -1,4 +1,4 @@
-function [aBS,aMS] = generate_aBS_aMS(sizeArray,spacing,power,myArray,tilt,BW)
+function [aBS,aMS] = generate_aBS_aMS(sizeArray,spacing,power,myArray,fc,tilt,BW)
     % sizeArray - размер решетки [vertical horizontal];
     % spacing - расстояние между элементами [vertical horizontal];
     % power - коэффициент домножения
@@ -6,7 +6,6 @@ function [aBS,aMS] = generate_aBS_aMS(sizeArray,spacing,power,myArray,tilt,BW)
     % tilt - повернуть ДН и поляризацию на tilt градусов
     % BW - ширина ДН [BW azimuth  BW Elevation] для custom
     %% Arrays
-    fc = 3.5e9;
     polarization = 1;
 
     if (myArray == "omni") || (myArray == "dipole")

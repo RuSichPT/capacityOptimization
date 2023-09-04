@@ -7,12 +7,13 @@ power = 1e7;
 myArray = 'omni';
 sizeArray = [4 4];
 tilt = 0;
+fc = 3.5e9;
 %% sizeArray
 range = {[0.25 0.25] [0.1 0.1]};
 for i = 1:length(range)
     spacing = range{i};
     % Канал
-    [aBS,aMS] = generate_aBS_aMS(sizeArray,spacing,power,myArray,tilt);
+    [aBS,aMS] = generate_aBS_aMS(sizeArray,spacing,power,myArray,fc,tilt);
     [H, Ch, l, b] = generate3GPPChannels(aBS,aMS,numUsers,numChan,seed);
     % Пропускная способность
     snr_dB = 0;
