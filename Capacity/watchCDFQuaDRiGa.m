@@ -40,4 +40,4 @@ xlabel('Azimuth angle')
 
 plotCDF(AoD);
 
-save("Capacity/privateFunc/AoD_EoD_" + myArray + ".mat","AoD","EoD");
+% save("Capacity/privateFunc/AoD_EoD_" + myArray + ".mat","AoD","EoD");

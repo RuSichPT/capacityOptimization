@@ -27,7 +27,7 @@ function [H, Ch, l, b] = generate3GPPChannels(aBS,aMS,numUsers,numChan,seed)
     l.rx_position(3,:) = 3*(floor-1) + 1.5;
     
     % LOSonly, Freespace, 3GPP_38.901_UMa_NLOS page 101 QuADRiGa
-    indoor_rx = l.set_scenario('LOSonly',[],[],0.8);       % Set the scenario
+    indoor_rx = l.set_scenario('3GPP_38.901_UMa_NLOS',[],[],0.8);       % Set the scenario
     l.rx_position(3,~indoor_rx) = 1.5;                                  % Set outdoor-users to 1.5 m height
     rng('shuffle');
     %%
